@@ -1,4 +1,4 @@
-# Modal
+# Navigation
 
 Thanks to Kyle from Web Dev Simplified.
 
