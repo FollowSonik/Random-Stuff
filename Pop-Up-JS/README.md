@@ -1,4 +1,4 @@
-# Modal
+# Pop up animation.
 
 Thanks to Dev Ed channel.
 
