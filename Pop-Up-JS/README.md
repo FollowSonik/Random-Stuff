@@ -2,4 +2,4 @@
 
 Thanks to Dev Ed channel.
 
-[!gif](http://g.recordit.co/T4eS8WQy8R.gif)
+[Look at the gif](http://g.recordit.co/T4eS8WQy8R.gif)
