@@ -1,4 +1,4 @@
-# Modal
+# Button Hover
 
 Thanks to Kyle from Web Dev Simplified.
 
