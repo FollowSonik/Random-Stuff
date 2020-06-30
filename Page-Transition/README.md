@@ -1,4 +1,4 @@
-# Modal
+# Page Transition
 
 Thanks to Kyle from Web Dev Simplified.
 
