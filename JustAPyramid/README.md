@@ -1,3 +1,3 @@
 # Just a pyramid..
 
-![img](https://raw.githubusercontent.com/FollowSonik/Random-Stuff/master/JustAPyramid/pyramid.jpg)
+![img](https://pbs.twimg.com/media/EcJWc-xXQAARwuj?format=jpg&name=small)
