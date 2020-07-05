@@ -1,0 +1,45 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('./image/FeelsBadMan.png')center/cover no-repeat;
+  /* background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat; */
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.counter-box {
+  flex: 0 0 70%;
+  text-align: center;
+  border: 3px solid grey;
+  padding: 1rem;
+  font-weight: bold;
+  box-shadow: 3px 3px 10px 10px black;
+}
+
+.counter {
+  font-size: 6rem;
+}
+
+.btn {
+  background: #ffffff;
+  border-radius: 8px;
+  font-size: 2rem;
+  padding: .5rem;
+  margin: .5rem .25rem;
+  border: 3px solid #f15025;
+  box-shadow: 0px 5px #001221;
+  outline: none;
+}
+
+.btn:hover {
+  background-color: #4caf50;
+  color: #ffffff
+}
+
+.btn:active {
+  box-shadow: none;
+}
