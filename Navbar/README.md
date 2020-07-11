@@ -1,3 +1,3 @@
 # Navbar
 
-![alt text](http://g.recordit.co/FQ8AlQrVyT.gif)
+![alt text](http://g.recordit.co/0VqtpJLN9b.gif)
