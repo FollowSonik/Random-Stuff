@@ -28,7 +28,7 @@ body {
 }
 
 #quoteBtn:hover {
-  color: #ffd000
+  color: #ffd000;
 }
 
 blockquote {
@@ -39,6 +39,5 @@ blockquote {
 }
 
 #quoteAuthor {
-  color: #ffd000
-  
+  color: #ffd000;
 }
