@@ -1,3 +1,3 @@
-# Button Hover
+# Quotes in random order..
 
-![alt text](http://g.recordit.co/PosTuvXWa9.gif)
+![alt text](https://raw.githubusercontent.com/FollowSonik/Random-Stuff/master/Quotes/quote.gif)
