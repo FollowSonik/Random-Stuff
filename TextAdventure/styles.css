@@ -1,0 +1,46 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #494949;
+}
+
+.container {
+  font-size: 1.3rem;
+  width: 800px;
+  min-width: 80%;
+  background-color: rgb(161, 144, 144);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 2px;
+}
+
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn {
+  font-size: 1.3rem;
+  background-color: hsla(88, 35%, 93%, 0.596);
+  border: 1px solid hsla(88, 35%, 30%, 0.596);
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: rgb(29, 129, 175);
+  outline: none;
+}
+
+.btn:hover {
+  border-color: rgba(75, 73, 73, 77%);
+}
