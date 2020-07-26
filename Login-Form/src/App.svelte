@@ -1,6 +1,7 @@
 <script>
   let strength = 0;
   let validations = [];
+  let showPassword = false;
 
   function validatePassword(event) {
     const password = event.target.value;
@@ -9,10 +10,10 @@
       password.length > 5,
       password.search(/[A-Z]/) > -1,
       password.search(/[0-9]/) > -1,
-      password.search(/[$&+,:;=?@#]/),
+      password.search(/[$&+,:;=?@#]/) > -1,
     ];
 
-    strength = validations.reduce((acc, cur) => acc + cur);
+    strength = validations.reduce((acc, cur) => acc + cur, 0);
   }
 </script>
 
@@ -123,6 +124,14 @@
   .bar-4 {
     background: linear-gradient(to right, yellowgreen, green);
   }
+
+  .toggle-password {
+    position: absolute;
+    cursor: help;
+    font-size: 0.8rem;
+    right: 0.25rem;
+    bottom: 0.5rem;
+  }
 </style>
 
 <main>
@@ -132,20 +141,34 @@
       <label for="email" class="label">Email</label>
     </div>
     <div class="field">
-      <input type="password" name="email" class="input" placeholder=" " />
+      <input
+        type={showPassword ? 'text' : 'password'}
+        name="email"
+        class="input"
+        placeholder="
+        "
+        on:input={validatePassword}
+        class:valid={strength > 3} />
       <label for="password" class="label">Password</label>
+      <span
+        class="toggle-password"
+        on:mouseover={() => (showPassword = true)}
+        on:mouseleave={() => (showPassword = false)} />
+      {showPassword ? 'hide' : 'show'}
     </div>
     <div class="strength">
-      <span class="bar bar-1" />
-      <span class="bar bar-2" />
-      <span class="bar bar-3" />
-      <span class="bar bar-4" />
+      <span class="bar bar-1" class:bar-show={strength > 0} />
+      <span class="bar bar-2" class:bar-show={strength > 1} />
+      <span class="bar bar-3" class:bar-show={strength > 2} />
+      <span class="bar bar-4" class:bar-show={strength > 3} />
     </div>
+    <!-- {#if validations.length} -->
     <ul>
-      <li>Must be at least 5 characters</li>
-      <li>Must contain a capital letter</li>
-      <li>Must contain a number</li>
-      <li>Must contain one of $&+,:;=?@#</li>
+      <li>{validations[0] ? 'v' : 'x'} Must be at least 5 characters</li>
+      <li>{validations[1] ? 'v' : 'x'} Must contain a capital letter</li>
+      <li>{validations[2] ? 'v' : 'x'} Must contain a number</li>
+      <li>{validations[3] ? 'v' : 'x'} Must contain one of $&+,:;=?@#</li>
     </ul>
+    <!-- {/if} -->
   </form>
 </main>
