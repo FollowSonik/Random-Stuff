@@ -80,7 +80,7 @@
 
   .label {
     z-index: -1;
-    position: relative;
+    position: absolute;
     transform: translateY(-2rem);
     transform-origin: 0%;
     transition: transform 400ms;
@@ -152,9 +152,10 @@
       <label for="password" class="label">Password</label>
       <span
         class="toggle-password"
-        on:mouseover={() => (showPassword = true)}
-        on:mouseleave={() => (showPassword = false)} />
-      {showPassword ? 'hide' : 'show'}
+        on:mouseenter={() => (showPassword = true)}
+        on:mouseleave={() => (showPassword = false)}>
+        {showPassword ? 'hide' : 'show'}
+      </span>
     </div>
     <div class="strength">
       <span class="bar bar-1" class:bar-show={strength > 0} />
