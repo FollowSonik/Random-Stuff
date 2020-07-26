@@ -6,6 +6,7 @@
   width: 400px;
   height: 400px;
   margin: 100px auto;
+  position: relative;
 
   background-color: #fff;
 }
@@ -58,4 +59,26 @@
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
+}
+
+.gitbash-line.angle::before,
+.gitbash-line.angle::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+}
+
+.gitbash-line.angle::before {
+  right: 100%;
+  transform: translate3d(50, -50%, 0);
+}
+
+.gitbash-line.angle::after {
+  left: 100%;
+  transform: translate3d(-50, -50%, 0);
 }
