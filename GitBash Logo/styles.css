@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #333;
+}
+
 .gitbash {
   width: 400px;
   height: 400px;
@@ -9,6 +13,10 @@
   position: relative;
 
   background-color: #fff;
+  border-radius: 30px;
+  border: 8px solid white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  transform: rotate(45deg);
 }
 
 .gitbash-top, .gitbash-bottom {
@@ -58,11 +66,12 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0) rotate(45deg);
 }
 
 .gitbash-line.angle::before,
-.gitbash-line.angle::after {
+.gitbash-line.angle::after,
+.gitbash-line.horizontal::after {
   content: '';
   display: block;
   width: 60px;
@@ -79,6 +88,20 @@
 }
 
 .gitbash-line.angle::after {
+  left: 100%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.gitbash-line.horizontal {
+  width: 70%;
+  height: 30px;
+  background-color: white;
+  position: absolute;
+  top: 115px;
+  left: 0;
+}
+
+.gitbash-line.horizontal::after {
   left: 100%;
   transform: translate3d(-50%, -50%, 0);
 }
