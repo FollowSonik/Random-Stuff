@@ -75,10 +75,10 @@
 
 .gitbash-line.angle::before {
   right: 100%;
-  transform: translate3d(50, -50%, 0);
+  transform: translate3d(50%, -50%, 0);
 }
 
 .gitbash-line.angle::after {
   left: 100%;
-  transform: translate3d(-50, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
 }
