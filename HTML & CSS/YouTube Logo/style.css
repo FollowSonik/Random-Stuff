@@ -1,0 +1,28 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  perspective: 550px;
+}
+
+.youtube {
+  width: 300px;
+  height: 200px;
+  margin: 50px auto;
+  position: relative;
+  background-color: #f50b0b;
+  border-radius: 50px 50px 50px 50px / 30px 30px 30px 30px;
+}
+
+.youtube::before {
+  content: '';
+  display: block;
+  border-style: solid;
+  border-width: 40px 0 40px 70px;
+  background-color: transparent transparent transparent white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
