@@ -13,6 +13,10 @@ body {
   position: relative;
   background-color: #f50b0b;
   border-radius: 50px 50px 50px 50px / 30px 30px 30px 30px;
+  box-shadow:
+    -10px 0 0 #bb0b0b,
+    -40px 0 15px -10px rgba(0, 0, 0, .15);
+  transform: rotateY(30deg);
 }
 
 .youtube::before {
@@ -20,7 +24,7 @@ body {
   display: block;
   border-style: solid;
   border-width: 40px 0 40px 70px;
-  background-color: transparent transparent transparent white;
+  border-color: transparent transparent transparent white;
   position: absolute;
   top: 50%;
   left: 50%;
