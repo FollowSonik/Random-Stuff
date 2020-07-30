@@ -1,0 +1,59 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.vue {
+  width: 300px;
+  height: 260px;
+  margin: 50px auto;
+  position: relative;
+  border-style: solid;
+  border-width: 260px 150px 0 150px;
+  border-color: #3eb37f transparent transparent transparent;
+  animation: vueMain 500ms ease-in-out backwards
+}
+
+.vue::before,
+.vue::after {
+  content: '';
+  display: block;
+  border-style: solid;
+  position: absolute;
+  top: -260px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.vue::before {
+  border-width: 155px 90px 0 90px;
+  border-color: #33465a transparent transparent transparent;
+  animation: vuePseudo 500ms ease-in backwards 250ms;
+}
+
+.vue::after {
+  border-width: 60px 35px 0 35px;
+  border-color: white transparent transparent transparent;
+  animation: vuePseudo 500ms ease-in backwards 500ms;
+}
+
+@keyframes vueMain {
+  from {
+    transform: translateY(-25px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes vuePseudo {
+  from {
+    transform: translateX(-50%) translateY(-25px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
