@@ -28,3 +28,27 @@ auth.onAuthStateChanged(user => {
     userDetails.innerHTML = '';
   }
 });
+
+const db = firebase.firestore();
+
+const createPog = document.getElementById('createPog');
+const pogList = document.getElementById('pogList');
+
+let pogRef;
+let unsubscribe;
+
+auth.onAuthStateChanged(user => {
+  if (user) {
+    pogRef = db.collection('pogs');
+
+    createPog.onclick = () => {
+      const { serverTimestamp } = firebase.firestore.FieldValue;
+
+      pogRef.add({
+        uid: user.uid,
+        name: faker.commerce.productName(),
+        createdAt: serverTimestamp(),
+      });
+    }
+  }
+});
