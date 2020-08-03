@@ -50,5 +50,18 @@ auth.onAuthStateChanged(user => {
         createdAt: serverTimestamp(),
       });
     }
+
+    unsubscribe = pogRef
+      .where('uid', '==', user.uid)
+      .orderBy('createdAt')
+      .onSnapshot(querySnapshot => {
+        const items = querySnapshot.docs.map(doc => {
+          return `<li>${doc.data().name}</li>`
+        });
+
+        pogList.innerHTML = items.join('');
+      });
+  } else {
+    unsubscribe && unsubscribe();
   }
 });
