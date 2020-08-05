@@ -23,7 +23,7 @@ class HashTable {
 
 const dict = new HashTable();
 
-dict.add('ab', 1337);
-dict.add('ba', 3228);
+dict.add('a', 1337);
+dict.add('aa', 3228);
 
-console.log(dict.get('ab'), dict.get('ba'));
+console.log(dict.get('a'), dict.get('aa'));
