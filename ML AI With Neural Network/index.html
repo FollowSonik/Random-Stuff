@@ -7,10 +7,34 @@
   <script defer src="//unpkg.com/brain.js"></script>
   <title>Machine Learning AI with Neural Network</title>
   <script defer src="script.js"></script>
+
+  <style>
+    #color {
+      width: 200px;
+      height: 200px;
+      border: 5px solid black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .white {
+      color: white;
+    }
+  </style>
 </head>
 
 <body>
-  <id id="diagram"></id>
+  <id id="color">
+    <div class="white">White Text</div>
+    <div>Black Text</div>
+    <div id="pog">Pog Text</div>
+  </id>
+
+  <button id="white-button">White</button>
+  <button id="black-button">Black</button>
+  <button id="print-button">Print</button>
 </body>
 
 </html>
