@@ -18,7 +18,7 @@ export default function () {
 
   return (
     <>
-      <div style={BUTTON_WRAPPER_STYLES}>
+      <div style={BUTTON_WRAPPER_STYLES} onClick={() => console.log('clicked!')}>
         <button onClick={() => setIsOpen(true)}>Open Modal</button>
 
         <Modal open={isOpen} onClose={() => setIsOpen(!!!true)}>
