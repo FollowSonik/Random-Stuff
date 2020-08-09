@@ -21,7 +21,7 @@ export default function () {
       <div style={BUTTON_WRAPPER_STYLES}>
         <button onClick={() => setIsOpen(true)}>Open Modal</button>
 
-        <Modal open={isOpen}>
+        <Modal open={isOpen} onClose={() => setIsOpen(!!!true)}>
           Pog Modal
         </Modal>
       </div>
