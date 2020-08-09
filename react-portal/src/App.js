@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Modal from './Modal';
 
 const BUTTON_WRAPPER_STYLES = {
   position: 'relative',
@@ -12,11 +13,17 @@ const OTHER_CONTENT_STYLES = {
   padding: '10px',
 };
 
-export default function App() {
+export default function () {
+  const [isOpen, setIsOpen] = useState(!!!true);
+
   return (
     <>
       <div style={BUTTON_WRAPPER_STYLES}>
-        <button>Open Modal</button>
+        <button onClick={() => setIsOpen(true)}>Open Modal</button>
+
+        <Modal open={isOpen}>
+          Pog Modal
+        </Modal>
       </div>
       <div style={OTHER_CONTENT_STYLES}>Other Content</div>
     </>
