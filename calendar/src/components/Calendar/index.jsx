@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import './index.css';
 import * as calendar from './calendar';
 
@@ -56,6 +57,7 @@ export default class Calendar extends React.Component {
   render() {
     const { years, monthNames, weekDayNames } = this.props;
     const monthData = calendar.getMonthData(this.year, this.month);
+    const { currentDate, selectedDate } = this.state;
 
     return (
       <div className="calendar">
@@ -63,7 +65,7 @@ export default class Calendar extends React.Component {
           <button onClick={this.handlePrevMonthButtonClick}>{'<'}</button>
           <select
             ref={element => this.monthSelect = element}
-            defaultValue={this.month}
+            value={this.month}
             onChange={this.handleSelectChange}
           >
             {monthNames.map((name, index) => {
@@ -72,7 +74,7 @@ export default class Calendar extends React.Component {
           </select>
           <select
             ref={element => this.yearSelect = element}
-            defaultValue={this.year}
+            value={this.year}
             onChange={this.handleSelectChange}
           >
             {years.map(year => {
@@ -96,7 +98,12 @@ export default class Calendar extends React.Component {
                   return date ?
                     <td
                       key={index}
-                      className="day"
+                      className={
+                        classnames('day', {
+                          'today': calendar.areEqual(date, currentDate),
+                          'selected': calendar.areEqual(date, selectedDate),
+                        })
+                      }
                       onClick={() => this.handleDayClick(date)}
                     >{date.getDate()}</td> :
                     <td
