@@ -10,4 +10,11 @@ button.onclick = start;
 
 function start() {
   button.onclick = () => counter.textContent = clicks++;
+
+  const timeout = setTimeout(() => {
+    button.onclick = null;
+    display.textContent = 'Game Over';
+
+    clearTimeout(timeout);
+  }, TIMEOUT);
 }
