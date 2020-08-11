@@ -11,13 +11,13 @@ button.onclick = start;
 function start() {
   const startTime = Date.now();
 
-  display.textContent = TIMEOUT;
+  display.textContent = formatTime(TIMEOUT);
   button.onclick = () => counter.textContent = clicks++;
 
   const interval = setInterval(() => {
     const delta = Date.now() - startTime;
-    display.textContent = TIMEOUT - delta;
-  }, 100);
+    display.textContent = formatTime(TIMEOUT - delta);
+  }, 1);
 
   const timeout = setTimeout(() => {
     button.onclick = null;
@@ -26,4 +26,8 @@ function start() {
     clearInterval(interval);
     clearTimeout(timeout);
   }, TIMEOUT);
+}
+
+function formatTime(ms) {
+  return Number.parseFloat(ms / 1e3).toFixed(3);
 }
