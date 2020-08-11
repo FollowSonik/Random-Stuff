@@ -9,12 +9,21 @@ const counter = document.getElementById('counter');
 button.onclick = start;
 
 function start() {
+  const startTime = Date.now();
+
+  display.textContent = TIMEOUT;
   button.onclick = () => counter.textContent = clicks++;
+
+  const interval = setInterval(() => {
+    const delta = Date.now() - startTime;
+    display.textContent = TIMEOUT - delta;
+  }, 100);
 
   const timeout = setTimeout(() => {
     button.onclick = null;
     display.textContent = 'Game Over';
 
+    clearInterval(interval);
     clearTimeout(timeout);
   }, TIMEOUT);
 }
