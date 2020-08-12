@@ -1,14 +1,22 @@
 function points(games) {
-  let total = 0;
+  // let total = 0;
 
-  games.forEach(game => {
+  // games.forEach(game => {
+  //   const [x, y] = game.split(':').map(Number);
+
+  //   if (x > y) total += 3;
+  //   else if (x === y) total += 1
+  // });
+
+  // return total;
+  return games.reduce((acc, game) => {
     const [x, y] = game.split(':').map(Number);
 
-    if (x > y) total += 3;
-    else if (x === y) total += 1
-  })
+    if (x > y) acc += 3;
+    else if (x === y) acc += 1
 
-  return total;
+    return acc;
+  }, 0);
 }
 
 const array = [
