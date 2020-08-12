@@ -10,3 +10,10 @@ function points(games) {
 
   return total;
 }
+
+const array = [
+  '1:0', '2:0', '3:0',
+  '4:0', '2:1', '3:1',
+];
+
+console.log(points(array));
