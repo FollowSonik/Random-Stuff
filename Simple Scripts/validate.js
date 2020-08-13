@@ -3,11 +3,11 @@ function validate(n) {
 
   if (digits.length % 2 === 0) {
     digits = digits.map((digit, index) => {
-      return index % 2 === 1 ? digit : digit;
+      return index % 2 === 0 ? digit : digit;
     });
   } else {
     digits = digits.map((digit, index) => {
-      return index % 2 === 0 ? digit : digit;
+      return index % 2 === 1 ? digit : digit;
     });
   }
 }
