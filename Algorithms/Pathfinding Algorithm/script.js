@@ -9,6 +9,14 @@ let start;
 let end;
 let v, h;
 
+function removeFromArray(array, element) {
+  for (let i = array.length - 1; i >= 0; i--) {
+    if (array[i] == element) {
+      array.splice(i, 1);
+    }
+  }
+}
+
 function Spot(i, j) {
   this.x = i;
   this.y = j;
@@ -50,7 +58,22 @@ function setup() {
 
 function draw() {
   if (openSet.length > 0) {
+    let winner = 0;
 
+    for (let i = 0; i < openSet.length; i++) {
+      if (openSet[i].f < openSet[winner].f) {
+        winner = i;
+      }
+    }
+
+    const current = openSet[winner];
+
+    if (current === end) {
+      console.log('Done!');
+    }
+
+    removeFromArray(openSet, current);
+    closedSet.push(current);
   } else {
 
   }
