@@ -1,5 +1,5 @@
-const cols = 5;
-const rows = 5;
+const cols = 25;
+const rows = 25;
 const grid = new Array(cols);
 
 const openSet = [];
@@ -17,17 +17,43 @@ function removeFromArray(array, element) {
   }
 }
 
+function heuristic(a, b) {
+  return dist(a.i, a.j, b.i, b.j);
+}
+
 function Spot(i, j) {
-  this.x = i;
-  this.y = j;
+  this.i = i;
+  this.j = j;
   this.f = 0;
   this.g = 0;
   this.h = 0;
+  this.neighbors = [];
 
   this.show = function (color) {
     fill(color);
     noStroke();
-    rect(this.x * w, this.y * h, w - 1, h - 1);
+    rect(this.i * w, this.j * h, w - 1, h - 1);
+  }
+
+  this.addNeighbors = function (grid) {
+    let i = this.i;
+    let j = this.j;
+
+    if (i < cols - 1) {
+      this.neighbors.push(grid[i + 1][j]);
+    }
+
+    if (i > 0) {
+      this.neighbors.push(grid[i - 1][j]);
+    }
+
+    if (j < rows - 1) {
+      this.neighbors.push(grid[i][j + 1]);
+    }
+
+    if (j > 0) {
+      this.neighbors.push(grid[i][j - 1]);
+    }
   }
 }
 
@@ -45,6 +71,12 @@ function setup() {
   for (let i = 0; i < cols; i++) {
     for (let j = 0; j < rows; j++) {
       grid[i][j] = new Spot(i, j);
+    }
+  }
+
+  for (let i = 0; i < cols; i++) {
+    for (let j = 0; j < rows; j++) {
+      grid[i][j].addNeighbors(grid);
     }
   }
 
@@ -74,6 +106,28 @@ function draw() {
 
     removeFromArray(openSet, current);
     closedSet.push(current);
+
+    const neighbors = current.neighbors;
+
+    for (let i = 0; i < neighbors.length; i++) {
+      const neighbor = neighbors[i];
+
+      if (!closedSet.includes(neighbor)) {
+        const tempG = current.g + 1;
+
+        if (openSet.includes(neighbor)) {
+          if (tempG < neighbor.g) {
+            neighbor.g = tempG;
+          }
+        } else {
+          neighbor.g = tempG;
+          openSet.push(neighbor);
+        }
+
+        neighbor.h = heuristic(neighbor, end);
+        neighbor.f = neighbor.g + neighbor.h;
+      }
+    }
   } else {
 
   }
