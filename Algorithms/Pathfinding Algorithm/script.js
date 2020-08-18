@@ -8,6 +8,7 @@ const closedSet = [];
 let start;
 let end;
 let v, h;
+let path = [];
 
 function removeFromArray(array, element) {
   for (let i = array.length - 1; i >= 0; i--) {
@@ -18,7 +19,8 @@ function removeFromArray(array, element) {
 }
 
 function heuristic(a, b) {
-  return dist(a.i, a.j, b.i, b.j);
+  // return dist(a.i, a.j, b.i, b.j);
+  return abs(a.i - b.i) + abs(a.j - b.j);
 }
 
 function Spot(i, j) {
@@ -28,6 +30,7 @@ function Spot(i, j) {
   this.g = 0;
   this.h = 0;
   this.neighbors = [];
+  this.previous = void 0;
 
   this.show = function (color) {
     fill(color);
@@ -81,7 +84,7 @@ function setup() {
   }
 
   start = grid[0][0];
-  end = grid[cols - 1][rows - 1];
+  end = grid[cols - 1][3];
 
   openSet.push(start);
 
@@ -98,9 +101,10 @@ function draw() {
       }
     }
 
-    const current = openSet[winner];
+    var current = openSet[winner];
 
     if (current === end) {
+      noLoop();
       console.log('Done!');
     }
 
@@ -126,6 +130,7 @@ function draw() {
 
         neighbor.h = heuristic(neighbor, end);
         neighbor.f = neighbor.g + neighbor.h;
+        neighbor.previous = current;
       }
     }
   } else {
@@ -146,5 +151,19 @@ function draw() {
 
   for (let i = 0; i < openSet.length; i++) {
     openSet[i].show(color(0, 255, 0));
+  }
+
+  path = [];
+  let temp = current;
+
+  path.push(temp);
+
+  while (temp.previous) {
+    path.push(temp.previous);
+    temp = temp.previous;
+  }
+
+  for (let i = 0; i < path.length; i++) {
+    path[i].show(color(0, 0, 255));
   }
 }
