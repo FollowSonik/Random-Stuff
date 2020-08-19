@@ -9,7 +9,6 @@ let start;
 let end;
 let v, h;
 let path = [];
-let noSolution = false;
 
 function removeFromArray(array, element) {
   for (let i = array.length - 1; i >= 0; i--) {
@@ -33,7 +32,7 @@ function Spot(i, j) {
   this.neighbors = [];
   this.previous = void 0;
 
-  if (random(1) < .3) {
+  if (random(1) < .4) {
     this.wall = true;
   }
 
@@ -66,6 +65,22 @@ function Spot(i, j) {
 
     if (j > 0) {
       this.neighbors.push(grid[i][j - 1]);
+    }
+
+    if (i > 0 && j > 0) {
+      this.neighbors.push(grid[i - 1][j - 1]);
+    }
+
+    if (i < cols - 1 && j > 0) {
+      this.neighbors.push(grid[i + 1][j - 1]);
+    }
+
+    if (i > 0 && j < rows - 1) {
+      this.neighbors.push(grid[i - 1][j + 1]);
+    }
+
+    if (i < cols - 1 && j < rows - 1) {
+      this.neighbors.push(grid[i + 1][j + 1]);
     }
   }
 }
@@ -147,7 +162,6 @@ function draw() {
     }
   } else {
     console.log('No solution.');
-    noSolution = true;
     noLoop();
   }
 
@@ -167,16 +181,14 @@ function draw() {
     openSet[i].show(color(0, 255, 0));
   }
 
-  if (!noSolution) {
-    path = [];
-    let temp = current;
+  path = [];
+  let temp = current;
 
-    path.push(temp);
+  path.push(temp);
 
-    while (temp.previous) {
-      path.push(temp.previous);
-      temp = temp.previous;
-    }
+  while (temp.previous) {
+    path.push(temp.previous);
+    temp = temp.previous;
   }
 
   for (let i = 0; i < path.length; i++) {
