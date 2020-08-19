@@ -1,5 +1,5 @@
-const cols = 25;
-const rows = 25;
+const cols = 50;
+const rows = 50;
 const grid = new Array(cols);
 
 const openSet = [];
@@ -19,8 +19,8 @@ function removeFromArray(array, element) {
 }
 
 function heuristic(a, b) {
-  // return dist(a.i, a.j, b.i, b.j);
-  return abs(a.i - b.i) + abs(a.j - b.j);
+  return dist(a.i, a.j, b.i, b.j);
+  // return abs(a.i - b.i) + abs(a.j - b.j);
 }
 
 function Spot(i, j) {
@@ -32,7 +32,7 @@ function Spot(i, j) {
   this.neighbors = [];
   this.previous = void 0;
 
-  if (random(1) < .4) {
+  if (random(1) < .3) {
     this.wall = true;
   }
 
@@ -145,19 +145,24 @@ function draw() {
 
       if (!closedSet.includes(neighbor) && !neighbor.wall) {
         const tempG = current.g + 1;
+        let newPath = false;
 
         if (openSet.includes(neighbor)) {
           if (tempG < neighbor.g) {
             neighbor.g = tempG;
+            newPath = true;
           }
         } else {
           neighbor.g = tempG;
+          newPath = true;
           openSet.push(neighbor);
         }
 
-        neighbor.h = heuristic(neighbor, end);
-        neighbor.f = neighbor.g + neighbor.h;
-        neighbor.previous = current;
+        if (newPath) {
+          neighbor.h = heuristic(neighbor, end);
+          neighbor.f = neighbor.g + neighbor.h;
+          neighbor.previous = current;
+        }
       }
     }
   } else {
