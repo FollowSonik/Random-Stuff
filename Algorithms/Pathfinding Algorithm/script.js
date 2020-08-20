@@ -32,7 +32,7 @@ function Spot(i, j) {
   this.neighbors = [];
   this.previous = void 0;
 
-  if (random(1) < .3) {
+  if (random(1) < .35) {
     this.wall = true;
   }
 
@@ -199,4 +199,14 @@ function draw() {
   for (let i = 0; i < path.length; i++) {
     path[i].show(color(0, 0, 255));
   }
+
+  noFill()
+  stroke(255);
+  beginShape();
+
+  for (let i = 0; i < path.length; i++) {
+    vertex(path[i].i * w, path[i].j * h);
+  }
+
+  endShape();
 }
