@@ -1,5 +1,5 @@
-const cols = 50;
-const rows = 50;
+const cols = 75;
+const rows = 75;
 const grid = new Array(cols);
 
 const openSet = [];
@@ -23,65 +23,67 @@ function heuristic(a, b) {
   // return abs(a.i - b.i) + abs(a.j - b.j);
 }
 
-function Spot(i, j) {
-  this.i = i;
-  this.j = j;
-  this.f = 0;
-  this.g = 0;
-  this.h = 0;
-  this.neighbors = [];
-  this.previous = void 0;
+class Spot {
+  constructor(i, j) {
+    this.i = i;
+    this.j = j;
+    this.f = 0;
+    this.g = 0;
+    this.h = 0;
+    this.neighbors = [];
+    this.previous = void 0;
 
-  if (random(1) < .35) {
-    this.wall = true;
-  }
-
-  this.show = function (color) {
-    fill(color);
-
-    if (this.wall) {
-      fill(0);
-      noStroke();
-      // rect(this.i * w, this.j * h, w - 1, h - 1);
-      ellipse(this.i * w + w / 2, this.j * h + h / 2, w / 2, h / 2);
-    }
-  }
-
-  this.addNeighbors = function (grid) {
-    let i = this.i;
-    let j = this.j;
-
-    if (i < cols - 1) {
-      this.neighbors.push(grid[i + 1][j]);
+    if (random(1) < .35) {
+      this.wall = true;
     }
 
-    if (i > 0) {
-      this.neighbors.push(grid[i - 1][j]);
-    }
+    this.show = function (color) {
+      fill(color);
 
-    if (j < rows - 1) {
-      this.neighbors.push(grid[i][j + 1]);
-    }
+      if (this.wall) {
+        fill(0);
+        noStroke();
+        // rect(this.i * w, this.j * h, w - 1, h - 1);
+        ellipse(this.i * w + w / 2, this.j * h + h / 2, w / 2, h / 2);
+      }
+    };
 
-    if (j > 0) {
-      this.neighbors.push(grid[i][j - 1]);
-    }
+    this.addNeighbors = function (grid) {
+      let i = this.i;
+      let j = this.j;
 
-    if (i > 0 && j > 0) {
-      this.neighbors.push(grid[i - 1][j - 1]);
-    }
+      if (i < cols - 1) {
+        this.neighbors.push(grid[i + 1][j]);
+      }
 
-    if (i < cols - 1 && j > 0) {
-      this.neighbors.push(grid[i + 1][j - 1]);
-    }
+      if (i > 0) {
+        this.neighbors.push(grid[i - 1][j]);
+      }
 
-    if (i > 0 && j < rows - 1) {
-      this.neighbors.push(grid[i - 1][j + 1]);
-    }
+      if (j < rows - 1) {
+        this.neighbors.push(grid[i][j + 1]);
+      }
 
-    if (i < cols - 1 && j < rows - 1) {
-      this.neighbors.push(grid[i + 1][j + 1]);
-    }
+      if (j > 0) {
+        this.neighbors.push(grid[i][j - 1]);
+      }
+
+      if (i > 0 && j > 0) {
+        this.neighbors.push(grid[i - 1][j - 1]);
+      }
+
+      if (i < cols - 1 && j > 0) {
+        this.neighbors.push(grid[i + 1][j - 1]);
+      }
+
+      if (i > 0 && j < rows - 1) {
+        this.neighbors.push(grid[i - 1][j + 1]);
+      }
+
+      if (i < cols - 1 && j < rows - 1) {
+        this.neighbors.push(grid[i + 1][j + 1]);
+      }
+    };
   }
 }
 
