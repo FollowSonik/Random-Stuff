@@ -8,6 +8,7 @@ function setup() {
   createCanvas(400, 400);
   cols = floor(width / w);
   rows = floor(height / w);
+  frameRate(5);
 
   for (let j = 0; j < rows; j++) {
     for (let i = 0; i < cols; i++) {
@@ -27,10 +28,18 @@ function draw() {
   }
 
   current.visited = true;
-  current.checkNeighbors();
+  const next = current.checkNeighbors();
+  if (next) {
+    next.visited = true;
+    current = next;
+  }
 }
 
 function index(i, j) {
+  if (i < 0 || j < 0 || i > cols - 1 || j > rows - 1) {
+    return -1;
+  }
+
   return i + j * cols;
 }
 
@@ -47,21 +56,26 @@ function Cell(i, j) {
     const bottom = grid[index(i, j + 1)];
     const left = grid[index(i - 1, j)];
 
-    if (!top.visited) {
+    if (top && !top.visited) {
       neigbors.push(top);
     }
 
-    if (!right.visited) {
+    if (right && !right.visited) {
       neigbors.push(right);
     }
 
-    if (!bottom.visited) {
+    if (bottom && !bottom.visited) {
       neigbors.push(bottom);
     }
 
-    if (!left.visited) {
+    if (left && !left.visited) {
       neigbors.push(left);
     }
+
+    if (neigbors.length > 0) {
+      const rand = floor(random(0, neigbors.length));
+      return neigbors[rand];
+    } else return void 0;
   }
 
   this.show = function () {
