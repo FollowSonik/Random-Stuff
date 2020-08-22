@@ -1,5 +1,6 @@
 let cols, rows;
 let w = 40;
+let current;
 
 const grid = [];
 
@@ -14,6 +15,8 @@ function setup() {
       grid.push(cell);
     }
   }
+
+  current = grid[0];
 }
 
 function draw() {
@@ -22,12 +25,19 @@ function draw() {
   for (let i = 0; i < grid.length; i++) {
     grid[i].show();
   }
+
+  current.visited = true;
+  current.checkNeighbors();
 }
 
 function Cell(i, j) {
   this.i = i;
   this.j = j;
   this.walls = [true, true, true, true];
+  this.visited = false;
+  this.checkNeighbors = function () {
+
+  }
 
   this.show = function () {
     let x = this.i * w;
@@ -40,7 +50,7 @@ function Cell(i, j) {
     }
 
     if (this.walls[1]) {
-      // line(x + w, y, x + w, y + w);
+      line(x + w, y, x + w, y + w);
     }
 
     if (this.walls[2]) {
@@ -51,7 +61,9 @@ function Cell(i, j) {
       line(x, y + w, x, y);
     }
 
-    // noFill();
-    // rect(x, y, w, w);
+    if (this.visited) {
+      fill(255, 0, 255, 100);
+      rect(x, y, w, w);
+    }
   }
 }
