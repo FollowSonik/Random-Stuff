@@ -30,13 +30,38 @@ function draw() {
   current.checkNeighbors();
 }
 
+function index(i, j) {
+  return i + j * cols;
+}
+
 function Cell(i, j) {
   this.i = i;
   this.j = j;
   this.walls = [true, true, true, true];
   this.visited = false;
   this.checkNeighbors = function () {
+    const neigbors = [];
 
+    const top = grid[index(i, j - 1)];
+    const right = grid[index(i + 1, j)];
+    const bottom = grid[index(i, j + 1)];
+    const left = grid[index(i - 1, j)];
+
+    if (!top.visited) {
+      neigbors.push(top);
+    }
+
+    if (!right.visited) {
+      neigbors.push(right);
+    }
+
+    if (!bottom.visited) {
+      neigbors.push(bottom);
+    }
+
+    if (!left.visited) {
+      neigbors.push(left);
+    }
   }
 
   this.show = function () {
