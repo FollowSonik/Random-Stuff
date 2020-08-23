@@ -103,6 +103,7 @@ function Cell(i, j) {
     }
 
     if (this.visited) {
+      noStroke();
       fill(255, 0, 255, 100);
       rect(x, y, w, w);
     }
@@ -110,6 +111,7 @@ function Cell(i, j) {
 }
 
 function removeWalls(a, b) {
+
   const x = a.i - b.i;
 
   if (x === 1) {
