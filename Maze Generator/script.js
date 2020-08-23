@@ -29,6 +29,7 @@ function draw() {
   }
 
   current.visited = true;
+  current.highlight();
   const next = current.checkNeighbors();
   if (next) {
     next.visited = true;
@@ -78,6 +79,15 @@ function Cell(i, j) {
       const rand = floor(random(0, neigbors.length));
       return neigbors[rand];
     } else return void 0;
+  }
+
+  this.highlight = function () {
+    let x = this.i * w;
+    let y = this.j * w;
+
+    noStroke();
+    fill(0, 0, 255, 100);
+    rect(x, y, w, w);
   }
 
   this.show = function () {
