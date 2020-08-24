@@ -52,77 +52,82 @@ function index(i, j) {
   return i + j * cols;
 }
 
-function Cell(i, j) {
-  this.i = i;
-  this.j = j;
-  this.walls = [true, true, true, true];
-  this.visited = false;
-  this.checkNeighbors = function () {
-    const neigbors = [];
+class Cell {
+  constructor(i, j) {
+    this.i = i;
+    this.j = j;
+    this.walls = [true, true, true, true];
+    this.visited = false;
 
-    const top = grid[index(i, j - 1)];
-    const right = grid[index(i + 1, j)];
-    const bottom = grid[index(i, j + 1)];
-    const left = grid[index(i - 1, j)];
+    this.checkNeighbors = function () {
+      const neigbors = [];
 
-    if (top && !top.visited) {
-      neigbors.push(top);
-    }
+      const top = grid[index(i, j - 1)];
+      const right = grid[index(i + 1, j)];
+      const bottom = grid[index(i, j + 1)];
+      const left = grid[index(i - 1, j)];
 
-    if (right && !right.visited) {
-      neigbors.push(right);
-    }
+      if (top && !top.visited) {
+        neigbors.push(top);
+      }
 
-    if (bottom && !bottom.visited) {
-      neigbors.push(bottom);
-    }
+      if (right && !right.visited) {
+        neigbors.push(right);
+      }
 
-    if (left && !left.visited) {
-      neigbors.push(left);
-    }
+      if (bottom && !bottom.visited) {
+        neigbors.push(bottom);
+      }
 
-    if (neigbors.length > 0) {
-      const rand = floor(random(0, neigbors.length));
-      return neigbors[rand];
-    } else return void 0;
-  }
+      if (left && !left.visited) {
+        neigbors.push(left);
+      }
 
-  this.highlight = function () {
-    let x = this.i * w;
-    let y = this.j * w;
+      if (neigbors.length > 0) {
+        const rand = floor(random(0, neigbors.length));
+        return neigbors[rand];
+      }
+      else
+        return void 0;
+    };
 
-    noStroke();
-    fill(0, 0, 255, 100);
-    rect(x, y, w, w);
-  }
+    this.highlight = function () {
+      let x = this.i * w;
+      let y = this.j * w;
 
-  this.show = function () {
-    let x = this.i * w;
-    let y = this.j * w;
-
-    stroke(255);
-
-    if (this.walls[0]) {
-      line(x, y, x + w, y);
-    }
-
-    if (this.walls[1]) {
-      line(x + w, y, x + w, y + w);
-    }
-
-    if (this.walls[2]) {
-      line(x + w, y + w, x, y + w);
-    }
-
-    if (this.walls[3]) {
-      line(x, y + w, x, y);
-    }
-
-    if (this.visited) {
       noStroke();
-      fill(255, 0, 255, 0);
+      fill(0, 0, 255, 100);
       rect(x, y, w, w);
-    }
+    };
+
+    this.show = function () {
+      let x = this.i * w;
+      let y = this.j * w;
+
+      stroke(255);
+
+      if (this.walls[0]) {
+        line(x, y, x + w, y);
+      }
+
+      if (this.walls[1]) {
+        line(x + w, y, x + w, y + w);
+      }
+
+      if (this.walls[2]) {
+        line(x + w, y + w, x, y + w);
+      }
+
+      if (this.walls[3]) {
+        line(x, y + w, x, y);
+      }
+
+      if (this.visited) {
+        noStroke();
+        fill(255, 0, 255, 0);
+        rect(x, y, w, w);
+      }
+    };
   }
 }
 
