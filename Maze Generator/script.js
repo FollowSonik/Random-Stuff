@@ -1,5 +1,5 @@
 let cols, rows;
-let w = 40;
+let w = 25;
 let current;
 
 const grid = [];
@@ -10,7 +10,7 @@ function setup() {
   cols = floor(width / w);
   rows = floor(height / w);
 
-  frameRate(5);
+  // frameRate(1200);
 
   for (let j = 0; j < rows; j++) {
     for (let i = 0; i < cols; i++) {
@@ -23,7 +23,7 @@ function setup() {
 }
 
 function draw() {
-  background(51);
+  background(18);
 
   for (let i = 0; i < grid.length; i++) {
     grid[i].show();
@@ -120,7 +120,7 @@ function Cell(i, j) {
 
     if (this.visited) {
       noStroke();
-      fill(255, 0, 255, 100);
+      fill(255, 0, 255, 0);
       rect(x, y, w, w);
     }
   }
