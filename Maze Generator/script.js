@@ -3,6 +3,7 @@ let w = 40;
 let current;
 
 const grid = [];
+const stack = [];
 
 function setup() {
   createCanvas(400, 400);
@@ -33,8 +34,13 @@ function draw() {
   const next = current.checkNeighbors();
   if (next) {
     next.visited = true;
+
+    stack.push(current);
+
     removeWalls(current, next);
     current = next;
+  } else if (stack.length) {
+    current = stack.pop();
   }
 }
 
