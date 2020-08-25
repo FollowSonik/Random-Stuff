@@ -11,4 +11,10 @@ function setup() {
 
   console.log(tree);
   tree.traverse();
+
+  const result = tree.search(10);
+
+  if (result == null) {
+    console.log("Not found.");
+  } else console.log(result);
 }
