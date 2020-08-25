@@ -5,8 +5,10 @@ function setup() {
 
   tree = new Tree();
   tree.addValue(5);
-  console.log(tree);
   tree.addValue(3);
+  tree.addValue(7);
+  tree.addValue(6);
+  console.log(tree);
 }
 
 function Tree() {
