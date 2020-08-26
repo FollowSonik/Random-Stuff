@@ -6,7 +6,7 @@ function setup() {
 
   tree = new Tree();
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 100; i++) {
     tree.addValue(floor(random(0, 100)));
   }
 

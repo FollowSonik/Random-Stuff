@@ -18,19 +18,24 @@ Node.prototype.search = function (val) {
   return null;
 };
 
-Node.prototype.visit = function () {
+Node.prototype.visit = function (parent) {
   if (this.left != null) {
-    this.left.visit();
+    this.left.visit(this);
   }
 
   console.log(this.value);
 
   fill(255);
   noStroke();
+  textAlign(CENTER);
   text(this.value, this.x, this.y);
+  stroke(255);
+  noFill();
+  ellipse(this.x, this.y, 20, 20);
+  line(parent.x, parent.y, this.x, this.y);
 
   if (this.right != null) {
-    this.right.visit();
+    this.right.visit(this);
   }
 };
 
