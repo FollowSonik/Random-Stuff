@@ -1,7 +1,8 @@
 let tree;
 
 function setup() {
-  noCanvas();
+  createCanvas(600, 400);
+  background(51);
 
   tree = new Tree();
 

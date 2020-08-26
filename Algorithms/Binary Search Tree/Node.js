@@ -1,7 +1,9 @@
-function Node(val) {
+function Node(val, x, y) {
   this.value = val;
   this.left = null;
   this.right = null;
+  this.x = x;
+  this.y = y;
 }
 
 Node.prototype.search = function (val) {
@@ -22,6 +24,10 @@ Node.prototype.visit = function () {
   }
 
   console.log(this.value);
+
+  fill(255);
+  noStroke();
+  text(this.value, this.x, this.y);
 
   if (this.right != null) {
     this.right.visit();
