@@ -4,3 +4,8 @@ function Node(value) {
   this.searched = false;
   this.parent = null;
 }
+
+Node.prototype.addEdge = function (neighbor) {
+  this.edges.push(neighbor);
+  neighbor.edges.push(this);
+}

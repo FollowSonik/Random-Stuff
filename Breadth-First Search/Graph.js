@@ -8,3 +8,7 @@ Graph.prototype.addNode = function (n) {
   const title = n.value;
   this.graph[title] = n;
 }
+
+Graph.prototype.getNode = function (actor) {
+  return this.graph[actor];
+}
