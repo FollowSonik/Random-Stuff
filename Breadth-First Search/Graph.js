@@ -7,10 +7,12 @@ function Graph() {
 
 Graph.prototype.setStart = function (actor) {
   this.start = this.graph[actor];
+  return this.start;
 }
 
 Graph.prototype.setEnd = function (actor) {
   this.end = this.graph[actor];
+  return this.end;
 }
 
 Graph.prototype.addNode = function (n) {

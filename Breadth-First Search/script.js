@@ -29,8 +29,20 @@ function setup() {
     }
   }
 
-  graph.setStart("Mickey Rourke");
-  graph.setEnd("Kevin Bacon");
+  const start = graph.setStart("Kevin Bacon");
+  const end = graph.setEnd("Kevin Bacon");
 
   console.log(graph);
+
+  const queue = [];
+  start.searched = true;
+  queue.push(start);
+
+  while (queue.length > 0) {
+    const current = queue.shift();
+
+    if (current == end) {
+      console.log("Found!", current.value);
+    }
+  }
 }
