@@ -7,7 +7,11 @@ function preload() {
 
 function setup() {
   graph = new Graph();
+  const dropdown = createSelect();
+  dropdown.changed(bfs);
+
   noCanvas();
+
   const movies = data.movies;
 
   for (let i = 0; i < movies.length; i++) {
@@ -22,13 +26,16 @@ function setup() {
 
       if (actorNode == void 0) {
         actorNode = new Node(actor);
+        dropdown.option(actor);
       }
 
       graph.addNode(actorNode);
       movieNode.addEdge(actorNode);
     }
   }
+}
 
+function bfs() {
   const start = graph.setStart("Rachel McAdams");
   const end = graph.setEnd("Kevin Bacon");
 
