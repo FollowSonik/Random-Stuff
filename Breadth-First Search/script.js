@@ -1,5 +1,6 @@
 let data;
 let graph;
+let dropdown;
 
 function preload() {
   data = loadJSON("kevin.json");
@@ -7,7 +8,7 @@ function preload() {
 
 function setup() {
   graph = new Graph();
-  const dropdown = createSelect();
+  dropdown = createSelect();
   dropdown.changed(bfs);
 
   noCanvas();
@@ -36,7 +37,9 @@ function setup() {
 }
 
 function bfs() {
-  const start = graph.setStart("Rachel McAdams");
+  graph.reset();
+
+  const start = graph.setStart(dropdown.value());
   const end = graph.setEnd("Kevin Bacon");
 
   console.log(graph);
