@@ -29,7 +29,7 @@ function setup() {
     }
   }
 
-  const start = graph.setStart("Kevin Bacon");
+  const start = graph.setStart("Rachel McAdams");
   const end = graph.setEnd("Kevin Bacon");
 
   console.log(graph);
@@ -43,6 +43,45 @@ function setup() {
 
     if (current == end) {
       console.log("Found!", current.value);
+      break;
+    }
+
+    const edges = current.edges;
+
+    for (let i = 0; i < edges.length; i++) {
+      const neighbor = edges[i];
+
+      if (!neighbor.searched) {
+        neighbor.searched = true;
+        neighbor.parent = current;
+
+        queue.push(neighbor);
+      }
     }
   }
+
+  const path = [];
+
+  path.push(end);
+
+  let next = end.parent;
+
+  while (next != null) {
+    path.push(next);
+    next = next.parent;
+  }
+
+  let txt = "";
+
+  for (let i = path.length - 1; i >= 0; i--) {
+    const n = path[i];
+
+    txt += n.value;
+
+    if (i != 0) {
+      txt += " ––> ";
+    }
+  }
+
+  createP(txt);
 }
