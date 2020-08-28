@@ -29,5 +29,8 @@ function setup() {
     }
   }
 
+  graph.setStart("Mickey Rourke");
+  graph.setEnd("Kevin Bacon");
+
   console.log(graph);
 }
