@@ -31,7 +31,24 @@ function draw() {
   let endHours = map(h % 12, 0, 12, 0, 360);
   arc(0, 0, 260, 260, 0, endHours);
 
-  // fill(255);
-  // noStroke();
-  // text(`${h}:${min}:${secs}`, 10, 200);
+  push();
+  rotate(endSecs);
+  stroke(255, 100, 150);
+  line(0, 0, 100, 0);
+  pop();
+
+  push();
+  rotate(endMins);
+  stroke(255, 100, 255);
+  line(0, 0, 75, 0);
+  pop();
+
+  push();
+  rotate(endHours);
+  stroke(255, 255, 100);
+  line(0, 0, 50, 0);
+  pop();
+
+  stroke(255);
+  point(0, 0);
 }
