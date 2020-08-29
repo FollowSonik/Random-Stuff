@@ -12,11 +12,6 @@ function draw() {
   let min = minute();
   let secs = second();
 
-  // strokeWeight(4);
-  // stroke(255);
-  // noFill();
-  // ellipse(200, 200, 300, 300);
-
   strokeWeight(8);
   noFill();
   stroke(255, 100, 150);
@@ -31,24 +26,28 @@ function draw() {
   let endHours = map(h % 12, 0, 12, 0, 360);
   arc(0, 0, 260, 260, 0, endHours);
 
+  getLine(endSecs, endMins, endHours);
+
+  stroke(255);
+  point(0, 0);
+}
+
+function getLine(secs, mins, hours) {
   push();
-  rotate(endSecs);
+  rotate(secs);
   stroke(255, 100, 150);
   line(0, 0, 100, 0);
   pop();
 
   push();
-  rotate(endMins);
+  rotate(mins);
   stroke(255, 100, 255);
   line(0, 0, 75, 0);
   pop();
 
   push();
-  rotate(endHours);
+  rotate(hours);
   stroke(255, 255, 100);
   line(0, 0, 50, 0);
   pop();
-
-  stroke(255);
-  point(0, 0);
 }
