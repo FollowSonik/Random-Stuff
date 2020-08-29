@@ -5,6 +5,8 @@ function setup() {
 
 function draw() {
   background(0);
+  translate(200, 200);
+  rotate(-90);
 
   let h = hour();
   let min = minute();
@@ -16,11 +18,18 @@ function draw() {
   // ellipse(200, 200, 300, 300);
 
   strokeWeight(8);
+  noFill();
   stroke(255, 100, 150);
+  let endSecs = map(secs, 0, 60, 0, 360);
+  arc(0, 0, 300, 300, 0, endSecs);
 
-  let end = map(mouseX, 0, width, 0, 360);
+  stroke(255, 100, 255);
+  let endMins = map(min, 0, 60, 0, 360);
+  arc(0, 0, 280, 280, 0, endMins);
 
-  arc(200, 200, 300, 300, 0, end);
+  stroke(255, 255, 100);
+  let endHours = map(h % 12, 0, 12, 0, 360);
+  arc(0, 0, 260, 260, 0, endHours);
 
   // fill(255);
   // noStroke();
