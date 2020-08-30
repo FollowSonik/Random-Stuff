@@ -1,19 +1,36 @@
 let rocket;
+let population;
 
 function setup() {
   createCanvas(400, 300);
-  rocket = new Rocket()
+  rocket = new Rocket();
+  population = new Population();
 }
 
 function draw() {
   background(0);
-  rocket.update();
-  rocket.show();
+  population.run();
+}
+
+function Population() {
+  this.rockets = [];
+  this.popsize = 25;
+
+  for (let i = 0; i < this.popsize; i++) {
+    this.rockets[i] = new Rocket();
+  }
+
+  this.run = function () {
+    for (let i = 0; i < this.popsize; i++) {
+      this.rockets[i].update();
+      this.rockets[i].show();
+    }
+  }
 }
 
 function Rocket() {
   this.pos = createVector(width / 2, height);
-  this.vel = createVector(0, -1);
+  this.vel = p5.Vector.random2D();
   this.acc = createVector();
 
   this.applyForce = function (force) {
@@ -28,10 +45,12 @@ function Rocket() {
 
   this.show = function () {
     push();
+    noStroke();
+    fill(250, 100);
     translate(this.pos.x, this.pos.y);
     rotate(this.vel.heading());
     rectMode(CENTER);
-    rect(0, 0, 50, 10);
+    rect(0, 0, 25, 5);
     pop();
   }
 }
