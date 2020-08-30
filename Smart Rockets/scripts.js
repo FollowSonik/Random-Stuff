@@ -13,7 +13,7 @@ function draw() {
 
 function Rocket() {
   this.pos = createVector(width / 2, height);
-  this.vel = createVector();
+  this.vel = createVector(0, -1);
   this.acc = createVector();
 
   this.applyForce = function (force) {
@@ -31,7 +31,7 @@ function Rocket() {
     translate(this.pos.x, this.pos.y);
     rotate(this.vel.heading());
     rectMode(CENTER);
-    rect(0, 0, 10, 50);
+    rect(0, 0, 50, 10);
     pop();
   }
 }
