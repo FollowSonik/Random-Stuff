@@ -148,7 +148,7 @@ function Rocket(dna) {
 
     this.applyForce(this.dna.genes[count]);
 
-    if !(this.completed) {
+    if (!this.completed) {
       this.vel.add(this.acc);
       this.pos.add(this.vel);
       this.acc.mult(0);
