@@ -4,6 +4,10 @@ let lifespan = 200;
 let lifeP;
 let count = 0;
 let target;
+let rx = 100;
+let ry = 150;
+let rw = 200;
+let rh = 10;
 
 function setup() {
   createCanvas(400, 300);
@@ -27,6 +31,9 @@ function draw() {
     population = new Population();
     count = 0;
   }
+
+  fill(255);
+  rect(100, 150, 200, 10);
 
   ellipse(target.x, target.y, 16, 16);
 }
@@ -130,6 +137,7 @@ function Rocket(dna) {
   this.vel = createVector();
   this.acc = createVector();
   this.completed = false;
+  this.crashed = false;
 
   if (dna) {
     this.dna = dna;
@@ -151,6 +159,10 @@ function Rocket(dna) {
     if (this.completed) {
       this.fitness *= 10;
     }
+
+    if (this.crashed) {
+      this.fitness = 1;
+    }
   }
 
   this.update = function () {
@@ -161,9 +173,13 @@ function Rocket(dna) {
       this.pos = target.copy();
     }
 
+    if (this.pos.x > rx && this.pos.x < rx + rw && this.pos.y > ry && this.pos.y < ry + rh) {
+      this.crashed = true;
+    }
+
     this.applyForce(this.dna.genes[count]);
 
-    if (!this.completed) {
+    if (!this.completed && !this.crashed) {
       this.vel.add(this.acc);
       this.pos.add(this.vel);
       this.acc.mult(0);
