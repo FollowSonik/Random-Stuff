@@ -74,6 +74,8 @@ function Population() {
       const parentB = random(this.matingpool).dna;
       const child = parentA.crossover(parentB);
 
+      child.mutation();
+
       newRockets[i] = new Rocket(child);
     }
 
@@ -112,6 +114,15 @@ function DNA(genes) {
 
     return new DNA(newGenes);
   }
+
+  this.mutation = function () {
+    for (let i = 0; i < this.genes.length; i++) {
+      if (random(1) < .01) {
+        this.genes[i] = p5.Vector.random2D();
+        this.genes[i].setMag(.1);
+      }
+    }
+  }
 }
 
 function Rocket(dna) {
@@ -136,6 +147,10 @@ function Rocket(dna) {
     const d = dist(this.pos.x, this.pos.y, target.x, target.y);
 
     this.fitness = map(d, 0, width, width, 0);
+
+    if (this.completed) {
+      this.fitness *= 10;
+    }
   }
 
   this.update = function () {
