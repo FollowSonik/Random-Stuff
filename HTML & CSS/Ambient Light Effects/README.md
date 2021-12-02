@@ -1,1 +1,1 @@
-![alt text](https://psv4.userapi.com/c520036/u653381167/docs/d17/e3a120222651/animation.gif?extra=uZFUvvOKqsZtdL4QFkObDjvrGnKiGxoqg0tAR5-ILrX36Kh-1fnaX1vc-Yeh0MM6BGJd7aaU1X5WEFhXlHp_YQFTBWAV9w25H3PLvk5ePW_lbETYUXX8ECc_M2gMynkYq4YFCf9HMWdxXTxNNgnla4sK)
+![alt text](https://psv4.userapi.com/c532036/u653381167/docs/d50/ba943f74f7d6/animation3.gif?extra=MqpFxTvPSJYylkyP_772atD-Y90GdvF6GFJurIgLcBrj2tEADyJBuQ55fjZaW7DZTgsva6ksevf_FZabnboDLBM7xqWPxn7iETfTEHsVn8Cxxt2IKf6uK-8prwi69ap8HuGii3jAWSvnLDgG8-1WiUrB)
