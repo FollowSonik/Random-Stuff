@@ -1,1 +1,1 @@
-![screen-gif](./animation.gif)
+![screen-gif](./animation3.gif)
